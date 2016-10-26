@@ -5,7 +5,12 @@
 
 import UIKit
 
+let tabBarHeight = 49
+
 class FriendsViewController: UITableViewController {
+    
+    
+    
     var friends = [Friend]()
     var friendsCount: Int?
     var friendsDictionaryArray: [[String: Any]]?
@@ -15,10 +20,41 @@ class FriendsViewController: UITableViewController {
     "fields": ["photo_50", "online"],
     "name_case": "nom"] as [String : Any]
     
-
+//    override func awakeFromNib() {
+//        let getFriendsRequest = VKApi.friends().get(parameters)
+//        getFriendsRequest?.execute(resultBlock: { (response) in
+//            print(response?.json)
+//            if let wrapperDictionary = response?.json as! [String : Any]?{
+//                if let friendsCountString = wrapperDictionary["count"] as? Int{
+//                    self.friendsCount = friendsCountString
+//                }
+//                self.friendsDictionaryArray = wrapperDictionary["items"] as? [[String: Any]]
+//                for friendsDictionary in self.friendsDictionaryArray!{
+//                    let friend = Friend()
+//                    friend.firstName = friendsDictionary["first_name"] as? String
+//                    friend.lastName = friendsDictionary["last_name"] as? String
+//                    friend.id = friendsDictionary["id"] as? Int
+//                    friend.isOnline = friendsDictionary["online"] as? Int == 0 ? false : true
+//                    if friend.isOnline != nil {
+//                        friend.isMobile = friendsDictionary["online_mobile"] == nil ? false : true
+//                    }
+//                    friend.imageUrl = URL(string: friendsDictionary["photo_50"] as! String)
+//                    self.friends.append(friend)
+//                }
+//            }
+//            
+//            print(self.friends)
+//            
+//            }, errorBlock: { (error) in
+//                print(error)
+//        })
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: CGFloat(-tabBarHeight))
+        
         let getFriendsRequest = VKApi.friends().get(parameters)
         getFriendsRequest?.execute(resultBlock: { (response) in
             print(response?.json)
@@ -41,7 +77,8 @@ class FriendsViewController: UITableViewController {
                 }
             }
             
-            print(self.friends)
+//            print(self.friends)
+            self.tableView.reloadData()
             
             }, errorBlock: { (error) in
                 print(error)
@@ -65,17 +102,25 @@ class FriendsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
 //        return friendsCount!
-        return 110
+        return friends.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "friendsViewControllerCell", for: indexPath) as! FriendCell
-        let index = indexPath.row
-        print(friends)
+//        print(friends)
         let friend = friends[indexPath.row]
+        cell.mobile.isHidden = true
+        cell.onlineView.isHidden = true
         cell.name.text = friend.firstName! + " " + friend.lastName!
         downloadImage(url: friend.imageUrl!, cell: cell)
+        if friend.isOnline!{
+            if friend.isMobile!{
+                cell.mobile.isHidden = false
+            } else {
+                cell.onlineView.isHidden = false
+            }
+        }
         return cell
     }
     
@@ -93,8 +138,10 @@ class FriendsViewController: UITableViewController {
             print(response?.suggestedFilename ?? url.lastPathComponent)
             print("Download Finished")
             DispatchQueue.main.async() { () -> Void in
-//                self.imageView.image = UIImage(data: data)
-                cell.photoView.image = UIImage(data: data)
+            
+//            cell.imageView?.image = UIImage(data: data)
+            cell.photoView.image = UIImage(data: data)
+                
             }
         }
     }

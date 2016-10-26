@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="evo-0b-QTu">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="VKTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YzL-g0-y3a">
+                                <color key="backgroundColor" red="0.49804477386980339" green="0.68021007678101597" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="iSW-BH-lCy"/>
+                                    <constraint firstAttribute="width" constant="60" id="v7w-xy-5ef"/>
+                                </constraints>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" backgroundImage="ic_vk_activity_logo">
+                                    <color key="titleShadowColor" red="0.19750547421488085" green="0.28390318792375946" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="authTouchUpWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WHE-jI-kG1"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Войти с помощью:" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wcR-b2-xIS">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="141" id="u82-UA-wfn"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="YzL-g0-y3a" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2uZ-9T-9MA"/>
+                            <constraint firstItem="YzL-g0-y3a" firstAttribute="top" secondItem="wcR-b2-xIS" secondAttribute="bottom" priority="500" constant="30" id="SGg-gj-qoU"/>
+                            <constraint firstItem="wcR-b2-xIS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ecI-dq-aKt"/>
+                            <constraint firstItem="wcR-b2-xIS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="li6-SB-bTT"/>
+                            <constraint firstItem="YzL-g0-y3a" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="xYI-7m-EyP"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="U8L-K7-2mO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="925.60000000000002" y="-575.26236881559225"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="xPW-G0-Vb0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="evo-0b-QTu" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5MU-0u-gNB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Fif-EI-iyo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1rT-23-xoM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="196" y="-575"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ic_vk_activity_logo" width="60" height="60"/>
+    </resources>
+</document>

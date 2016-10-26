@@ -3,7 +3,6 @@
 //  VKTest
 //
 
-
 import UIKit
 
 @UIApplicationMain
